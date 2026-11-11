@@ -144,7 +144,7 @@
 <section class="section how" id="how">
   <div class="wrap">
     <h2 class="h2" data-reveal>Buying crypto with Venga</h2>
-    <div class="steps">
+    <div class="steps" id="steps">
       <article class="stepcard" data-reveal>
         <div class="stepcard__media" style="--c:#78a6ff">
           <img class="stepcard__pattern" style="left:-3.18%;top:-17.24%;width:106.59%;height:134.77%" src="assets/pat-step1.svg" alt="">
@@ -169,6 +169,22 @@
         <h3>Select your payment method</h3>
         <p>Choose how you want to pay.</p>
       </article>
+    </div>
+    <!-- Carousel controls (Figma "Carrousel Controls", Tablet & Mobile): only shown when the cards scroll sideways -->
+    <div class="pager" id="steps-pager" role="group" aria-label="Steps" aria-controls="steps">
+      <button class="pager__arrow pager__arrow--prev" type="button" aria-label="Previous step" disabled>
+        <img class="pager__off" src="assets/pager-left.svg" width="24" height="24" alt="">
+        <img class="pager__on" src="assets/pager-right.svg" width="24" height="24" alt="">
+      </button>
+      <div class="pager__dots">
+        <button class="pager__dot" type="button" aria-label="Step 1" aria-current="step"></button>
+        <button class="pager__dot" type="button" aria-label="Step 2"></button>
+        <button class="pager__dot" type="button" aria-label="Step 3"></button>
+      </div>
+      <button class="pager__arrow pager__arrow--next" type="button" aria-label="Next step">
+        <img class="pager__off" src="assets/pager-left.svg" width="24" height="24" alt="">
+        <img class="pager__on" src="assets/pager-right.svg" width="24" height="24" alt="">
+      </button>
     </div>
     <a href="#" class="btn btn--dark" data-download data-reveal="pop">
       <span class="btn__label">Try Venga Today</span>

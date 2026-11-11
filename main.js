@@ -67,6 +67,48 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- Step cards carousel (tablet and phone): the pager follows the scroll and scrolls to a card ---------- */
+  var track = $('#steps');
+  var pager = $('#steps-pager');
+  if (track && pager) {
+    var cards = $$('.stepcard', track);
+    var dots = $$('.pager__dot', pager);
+    var prev = $('.pager__arrow--prev', pager);
+    var next = $('.pager__arrow--next', pager);
+    var current = 0;
+    var startPad = function () { return parseFloat(getComputedStyle(track).paddingLeft) || 0; };
+    var paint = function (i) {
+      current = i;
+      dots.forEach(function (d, j) { if (j === i) d.setAttribute('aria-current', 'step'); else d.removeAttribute('aria-current'); });
+      prev.disabled = i === 0;
+      next.disabled = i === cards.length - 1;
+    };
+    var go = function (i) {
+      i = Math.max(0, Math.min(cards.length - 1, i));
+      track.scrollTo({ left: cards[i].offsetLeft - startPad(), behavior: reduce ? 'auto' : 'smooth' });
+      paint(i);
+    };
+    var sync = function () {
+      var max = track.scrollWidth - track.clientWidth;
+      if (max <= 0) return;
+      if (track.scrollLeft >= max - 4) return paint(cards.length - 1); // the last card can't reach the left edge
+      var x = track.scrollLeft + startPad(), best = 0;
+      cards.forEach(function (c, j) { if (Math.abs(c.offsetLeft - x) < Math.abs(cards[best].offsetLeft - x)) best = j; });
+      paint(best);
+    };
+    var raf = 0;
+    track.addEventListener('scroll', function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(sync); }, { passive: true });
+    track.addEventListener('scrollend', sync);
+    prev.addEventListener('click', function () { go(current - 1); });
+    next.addEventListener('click', function () { go(current + 1); });
+    dots.forEach(function (d, j) { d.addEventListener('click', function () { go(j); }); });
+    pager.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+    });
+    window.addEventListener('resize', sync);
+  }
+
   /* ---------- FAQ accordion ---------- */
   $$('.qa').forEach(function (qa) {
     var btn = $('.qa__q', qa);
