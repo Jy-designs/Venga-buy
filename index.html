@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buy crypto · Venga</title>
+<meta name="description" content="Easily become a crypto investor and smoothly scale your portfolio holdings with Venga.">
+<link rel="preload" href="fonts/labil_grotesk_black.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="assets/hero.jpg" as="image" fetchpriority="high">
+<link rel="stylesheet" href="styles.css?v=20261111a">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ NAV (Figma "Nav Bar") ============ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__logo" aria-label="Venga, back to top"><img src="assets/logo.svg" width="130" height="24" alt="Venga"></a>
+  <nav class="nav__menu" id="menu" aria-label="Main">
+    <a href="#" class="nav__link">TRADE <img src="assets/nav-arrow-down.svg" width="16" height="16" alt=""></a>
+    <a href="#" class="nav__link">INVEST <img src="assets/nav-arrow-down.svg" width="16" height="16" alt=""></a>
+    <a href="#" class="nav__link">EARN</a>
+    <a href="#" class="nav__link">CARDS</a>
+    <a href="#" class="nav__link">ABOUT</a>
+    <a href="#" class="nav__link">BLOG</a>
+    <a href="#" class="nav__link nav__link--cta" data-download>DOWNLOAD</a>
+  </nav>
+  <div class="nav__end">
+    <button class="nav__lang" type="button" aria-label="Language: English"><img src="assets/flag-uk.svg" width="20" height="20" alt=""><span>EN</span><img src="assets/nav-arrow-down-lang.svg" width="16" height="16" alt=""></button>
+    <a href="#" class="nav__cta" data-download>DOWNLOAD</a>
+    <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO + CALCULATOR (42401:47987) ============ -->
+<section class="hero" id="top">
+  <img class="hero__bg" src="assets/hero.jpg" width="1920" height="1080" alt="">
+  <div class="hero__row">
+    <div class="hero__copy">
+      <div class="hero__text">
+        <h1 class="hero__title" data-reveal>Buy crypto and ride the wave</h1>
+        <p class="hero__sub" data-reveal style="--d:.12s">Easily become a crypto investor and smoothly scale your portfolio holdings.</p>
+      </div>
+      <a href="#" class="btn btn--orange btn--hero" data-download data-reveal="pop" style="--d:.24s">
+        <span class="btn__label">Get the App</span>
+        <span class="btn__ico"><img src="assets/arrow-right-hero-a.svg" width="24" height="24" alt=""><img src="assets/arrow-right-hero-b.svg" width="24" height="24" alt=""></span>
+      </a>
+    </div>
+
+    <!-- Buy calculator (Figma 42401:47998; behaviour from the "buy" prototype, variant D). Logic in calculator.js -->
+    <section class="calc" id="calc" aria-label="Crypto calculator" data-reveal style="--d:.3s">
+      <div class="calc__fields">
+        <div class="field">
+          <label class="label" for="invest">You invest</label>
+          <div class="box" data-role="investBox">
+            <span class="box__cur">€</span>
+            <input id="invest" type="text" inputmode="decimal" autocomplete="off" aria-label="Amount in euros">
+            <span class="box__steps">
+              <button class="box__step" type="button" data-step="invest" data-dir="-1" aria-label="Remove €10"><img src="assets/minus-circle.svg" width="24" height="24" alt=""></button>
+              <button class="box__step" type="button" data-step="invest" data-dir="1" aria-label="Add €10"><img src="assets/plus-circle.svg" width="24" height="24" alt=""></button>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label" id="crypto-label">Crypto</span>
+          <div class="select" id="select">
+            <button class="box select__btn" id="select-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="crypto-label select-name">
+              <img class="select__icon" id="select-icon" src="assets/calc-btc-icon.svg" width="24" height="24" alt="">
+              <span class="select__name" id="select-name">Bitcoin</span>
+              <img class="select__chev" src="assets/calc-chevron.svg" width="24" height="24" alt="">
+            </button>
+            <div class="select__panel" id="select-panel">
+              <label class="select__search">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="#707070" stroke-width="1.5"/><path d="M20 20l-3.5-3.5" stroke="#707070" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <input id="search" type="text" placeholder="Search for a crypto" autocomplete="off" spellcheck="false" aria-label="Search for a crypto" aria-controls="coin-list">
+              </label>
+              <ul class="select__list" id="coin-list" role="listbox" aria-label="Cryptos"></ul>
+              <p class="select__empty" id="select-empty" hidden>No coins match your search.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc__group">
+        <span class="label">You receive</span>
+        <div class="receive">
+          <img class="receive__coin" id="receive-coin" src="assets/calc-coin-btc.png" width="60" height="60" alt="">
+          <div class="receive__text">
+            <p class="receive__amt" id="receive" aria-live="polite">–</p>
+            <p class="note">Estimated amount. The final price may differ.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="calc__what">What if the price changes?</p>
+
+      <div class="calc__row">
+        <div class="slider" id="slider">
+          <div class="slider__tag">
+            <div class="tag"><img class="tag__pattern" src="assets/tag-pattern.svg" alt=""><span class="tag__glass"></span><span class="tag__text" id="tag-text">+0%</span></div>
+            <img class="tag__pointer" src="assets/tag-pointer.svg" width="8" height="7" alt="">
+          </div>
+          <div class="slider__rail">
+            <div class="slider__track"><div class="slider__fill" id="fill"></div></div>
+            <button class="slider__tick" id="tick" type="button" aria-label="Reset to 0%"><img src="assets/tick.svg" width="4" height="4" alt=""></button>
+            <div class="slider__knob" id="knob" role="slider" tabindex="0" aria-label="Price change" aria-valuemin="-100" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0%"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="future">Future price</label>
+          <div class="box" data-role="futureBox">
+            <span class="box__cur">€</span>
+            <input id="future" type="text" inputmode="decimal" autocomplete="off">
+            <span class="box__steps">
+              <button class="box__step" type="button" data-step="future" data-dir="-1" aria-label="Lower the future price by 1%"><img src="assets/minus-circle.svg" width="24" height="24" alt=""></button>
+              <button class="box__step" type="button" data-step="future" data-dir="1" aria-label="Raise the future price by 1%"><img src="assets/plus-circle.svg" width="24" height="24" alt=""></button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc__group">
+        <span class="label">Your crypto would be worth</span>
+        <div class="worth">
+          <div class="worth__row"><p class="worth__val" id="worth" aria-live="polite">–</p><p class="worth__gain" id="gain"></p></div>
+          <p class="note">Estimated amount. The final price may differ. | Hypothetical scenario, not a forecast.</p>
+        </div>
+      </div>
+
+      <div class="calc__meta">
+        <p><span>Reference price:</span> <span id="ref">loading live price…</span> <span>Hypothetical scenario, not a forecast.</span></p>
+        <p id="updated">Last updated: –</p>
+      </div>
+
+      <a class="calc__cta" id="calc-cta" href="#" data-download><span id="cta-text">Get BTC</span><img id="cta-icon" src="assets/cta-btc.svg" width="32" height="32" alt=""></a>
+    </section>
+  </div>
+</section>
+
+<!-- ============ BUYING CRYPTO WITH VENGA (42401:48096) ============ -->
+<section class="section how" id="how">
+  <div class="wrap">
+    <h2 class="h2" data-reveal>Buying crypto with Venga</h2>
+    <div class="steps">
+      <article class="stepcard" data-reveal>
+        <div class="stepcard__media" style="--c:#78a6ff">
+          <img class="stepcard__pattern" style="left:-3.18%;top:-17.24%;width:106.59%;height:134.77%" src="assets/pat-step1.svg" alt="">
+          <img class="stepcard__phone" src="assets/step1.png" width="402" height="318" alt="Venga app: the list of crypto tokens with their prices" loading="lazy">
+        </div>
+        <h3>Choose your crypto</h3>
+        <p>From more than 80 assets listed.</p>
+      </article>
+      <article class="stepcard" data-reveal style="--d:.1s">
+        <div class="stepcard__media" style="--c:#e6f96a">
+          <img class="stepcard__pattern" style="left:-3.64%;top:-17.53%;width:106.82%;height:135.06%" src="assets/pat-step2.svg" alt="">
+          <img class="stepcard__phone" src="assets/step2.png" width="402" height="318" alt="Venga app: enter the amount in euros" loading="lazy">
+        </div>
+        <h3>Make your purchase</h3>
+        <p>Select your amount you want to buy.</p>
+      </article>
+      <article class="stepcard" data-reveal style="--d:.2s">
+        <div class="stepcard__media" style="--c:#ff627f">
+          <img class="stepcard__pattern" style="left:-12.73%;top:-29.6%;width:125.68%;height:158.91%" src="assets/pat-step3.svg" alt="">
+          <img class="stepcard__phone" src="assets/step3.png" width="402" height="318" alt="Venga app: choose how you want to pay" loading="lazy">
+        </div>
+        <h3>Select your payment method</h3>
+        <p>Choose how you want to pay.</p>
+      </article>
+    </div>
+    <a href="#" class="btn btn--dark" data-download data-reveal="pop">
+      <span class="btn__label">Try Venga Today</span>
+      <span class="btn__ico"><img src="assets/arrow-right-dark.svg" width="24" height="24" alt=""><img src="assets/arrow-right-dark.svg" width="24" height="24" alt=""></span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ WHY BUY (42401:48432) ============ -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="why__top">
+      <div class="why__intro">
+        <h2 class="h2 h2--left" data-reveal>Why buy crypto with Venga?</h2>
+        <p class="sub" data-reveal style="--d:.1s">Take advantage of Venga's intuitiveness, affordability, and security to buy crypto assets.</p>
+      </div>
+      <article class="reason" style="--c:#ff627f;--ic:#ff627f" data-reveal>
+        <img class="reason__pattern" src="assets/pat-why1.svg" alt="">
+        <div class="reason__glass">
+          <div class="reason__head"><span class="reason__ico"><img src="assets/icon-strategy.svg" width="32" height="32" alt=""></span><h3>Intuitive</h3></div>
+          <div class="reason__text">
+            <p>Invest seamlessly in your desired crypto assets through our easy-to-use app’s interface. We made it simple and fast to buy crypto on Venga, even for beginners.</p>
+            <p>Crypto investment has never been this easy!</p>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="why__row">
+      <article class="reason" style="--c:#b5fce1;--ic:#70f8c4" data-reveal>
+        <img class="reason__pattern" src="assets/pat-why2.svg" alt="">
+        <div class="reason__glass">
+          <div class="reason__head"><span class="reason__ico"><img src="assets/icon-shield.svg" width="32" height="32" alt=""></span><h3>Secure</h3></div>
+          <div class="reason__text">
+            <p>Choose a safe and regulated platform in the European Union to manage your crypto investment. We make your assets’ security one of our main priorities.</p>
+            <p>Keep your mind at peace!</p>
+          </div>
+        </div>
+      </article>
+      <article class="reason" style="--c:#fedb5f;--ic:#ffca0d;--d:.12s" data-reveal>
+        <img class="reason__pattern" src="assets/pat-why3.svg" alt="">
+        <div class="reason__glass">
+          <div class="reason__head"><span class="reason__ico"><img src="assets/icon-coins.svg" width="32" height="32" alt=""></span><h3>Low Fees</h3></div>
+          <div class="reason__text">
+            <p>Our team strives to bring you the best solutions from the crypto space. This allows us to offer you some of the market's lowest fees, which are always transparently displayed.</p>
+            <p>Crypto shouldn't be expensive to invest in!</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUY WITH ANY OF THESE ASSETS (42401:48443) ============ -->
+<section class="section assets" id="assets">
+  <div class="wrap assets__wrap">
+    <div class="assets__phone" data-reveal="scale">
+      <img src="assets/assets-phone.png" width="254" height="526" alt="Venga app: list of crypto assets with their prices" loading="lazy">
+    </div>
+    <div class="assets__copy">
+      <h2 class="h2 h2--left assets__title" data-reveal>Buy with any of these assets</h2>
+      <div class="sub" data-reveal style="--d:.1s">
+        <p>The Venga app is currently allowing you to buy some of the major cryptocurrencies such as Bitcoin (BTC), Ethereum (ETH), Chainlink (LINK), and more.</p>
+        <p>We keep on adding more assets to expand your investment opportunities!</p>
+      </div>
+      <div class="assets__list">
+        <ul class="chips">
+          <li><a href="#" class="chip"><img src="assets/coins/avax.svg" width="32" height="32" alt=""><span>AVAX</span><img class="chip__arrow" src="assets/chip-arrow.svg" width="20" height="20" alt=""></a></li>
+          <li><a href="#" class="chip"><img src="assets/coins/ada.svg" width="32" height="32" alt=""><span>ADA</span><img class="chip__arrow" src="assets/chip-arrow.svg" width="20" height="20" alt=""></a></li>
+          <li><a href="#" class="chip"><img src="assets/coins/bnb.svg" width="32" height="32" alt=""><span>BNB</span><img class="chip__arrow" src="assets/chip-arrow.svg" width="20" height="20" alt=""></a></li>
+          <li><a href="#" class="chip"><img src="assets/coins/btc.svg" width="32" height="32" alt=""><span>BTC</span><img class="chip__arrow" src="assets/chip-arrow.svg" width="20" height="20" alt=""></a></li>
+          <li><a href="#" class="chip"><img src="assets/coins/doge.svg" width="32" height="32" alt=""><span>DOGE</span><img class="chip__arrow" src="assets/chip-arrow.svg" width="20" height="20" alt=""></a></li>
+          <li><a href="#" class="chip"><img src="assets/coins/eth.svg" width="32" height="32" alt=""><span>ETH</span><img class="chip__arrow" src="assets/chip-arrow.svg" width="20" height="20" alt=""></a></li>
+          <li><a href="#" class="chip"><img src="assets/coins/sui.svg" width="32" height="32" alt=""><span>SUI</span><img class="chip__arrow" src="assets/chip-arrow.svg" width="20" height="20" alt=""></a></li>
+          <li><a href="#" class="chip"><img src="assets/coins/grt.svg" width="32" height="32" alt=""><span>GRT</span><img class="chip__arrow" src="assets/chip-arrow.svg" width="20" height="20" alt=""></a></li>
+          <li><a href="#" class="chip"><img src="assets/coins/sol.svg" width="32" height="32" alt=""><span>SOL</span><img class="chip__arrow" src="assets/chip-arrow.svg" width="20" height="20" alt=""></a></li>
+          <li><a href="#" class="chip"><img src="assets/coins/trx.svg" width="32" height="32" alt=""><span>TRX</span><img class="chip__arrow" src="assets/chip-arrow.svg" width="20" height="20" alt=""></a></li>
+          <li><a href="#" class="chip"><img src="assets/coins/xrp.svg" width="32" height="32" alt=""><span>XRP</span><img class="chip__arrow" src="assets/chip-arrow.svg" width="20" height="20" alt=""></a></li>
+        </ul>
+        <a href="#" class="assets__link"><span>See all our available coins</span><img src="assets/link-arrow.svg" width="24" height="24" alt=""></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENJOY YOUR INVESTMENT (42401:48521) ============ -->
+<section class="promo" id="download">
+  <img class="promo__bg" src="assets/promo.jpg" width="1024" height="539" alt="" loading="lazy">
+  <div class="promo__card" data-reveal>
+    <div class="promo__qr">
+      <div class="qr">
+        <img class="qr__pattern" src="assets/promo-pattern.svg" alt="">
+        <div class="qr__block">
+          <img src="assets/qr.svg" width="217" height="217" alt="QR code to download the Venga app">
+          <p>Scan &amp; Download</p>
+        </div>
+      </div>
+      <div class="qr__stores"><img src="assets/apple.svg" width="43" height="43" alt="iOS"><img src="assets/android.svg" width="33" height="38" alt="Android"></div>
+    </div>
+    <div class="promo__copy">
+      <h2 class="h2 h2--left promo__title">Enjoy your investment</h2>
+      <img class="promo__coin promo__coin--sol" src="assets/promo-sol.png" width="88" height="88" alt="">
+      <img class="promo__coin promo__coin--eth" src="assets/promo-eth.png" width="100" height="100" alt="">
+      <img class="promo__coin promo__coin--btc" src="assets/promo-btc.png" width="148" height="148" alt="">
+      <ul class="perks">
+        <li><span class="perks__ico" style="--c:#70f8c4"><img src="assets/icon-cart.svg" alt=""></span><p>Buy your first, or next, crypto in seconds</p></li>
+        <li><span class="perks__ico" style="--c:#78a6ff"><img src="assets/icon-refresh.svg" alt=""></span><p>Swap or sell anytime, with clear steps and no surprises</p></li>
+        <li><span class="perks__ico" style="--c:#ff4365"><img src="assets/icon-swap-sm.svg" alt=""></span><p>Automate your crypto purchases to invest effortlessly</p></li>
+        <li><span class="perks__ico" style="--c:#ffca0d"><img src="assets/icon-coins-sm.svg" alt=""></span><p>Earn rewards on supported coins</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAFE FROM THE START (42401:48582) ============ -->
+<section class="section trust" id="trust">
+  <div class="wrap wrap--narrow">
+    <header class="head head--narrow">
+      <h2 class="h2" data-reveal>Safe from the start</h2>
+      <p class="sub" data-reveal style="--d:.1s">Venga is authorised by Spain’s CNMV as a crypto-asset service provider under MiCA, the EU’s regulatory framework for crypto-assets. We’re committed to building trust and delivering a Europe-first experience.</p>
+    </header>
+    <div class="badges">
+      <div class="badge" data-reveal>
+        <span class="badge__flags"><img src="assets/flag-es.svg" width="36" height="36" alt=""><img src="assets/flag-eu.svg" width="36" height="36" alt=""></span>
+        <p>MiCA Regulated by the CNMV in Spain</p>
+      </div>
+      <div class="badge" data-reveal style="--d:.1s">
+        <span class="badge__ledger"><small>SECURED BY</small><img src="assets/ledger.svg" width="95" height="32" alt="Ledger"></span>
+        <p>Custody secured by <br>Ledger Enterprise</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TAKE YOUR INVESTMENT TO THE NEXT LEVEL (42401:48599) ============ -->
+<section class="section more" id="more">
+  <div class="wrap more__wrap">
+    <header class="head">
+      <h2 class="h2" data-reveal>Take your investment <br>to the next level</h2>
+      <p class="sub more__sub" data-reveal style="--d:.1s">With Venga you can do way more than simply Buy crypto assets, you can start and scale your investment at your pace, and in various way!</p>
+    </header>
+    <div class="features">
+      <a href="#" class="feature" style="--c:#70f8c4" data-reveal="pop">
+        <span class="feature__block"><img class="feature__pattern" style="--w:459;--x:-27.5;--y:40.5" src="assets/pat-sell.svg" alt=""><img class="feature__icon" src="assets/icon-sell.svg" width="55" height="55" alt=""></span>
+        <span class="feature__label">Sell</span>
+      </a>
+      <a href="#" class="feature" style="--c:#ff4365;--d:.06s" data-reveal="pop">
+        <span class="feature__block"><img class="feature__pattern" style="--w:550;--x:0;--y:0" src="assets/pat-swap.svg" alt=""><img class="feature__icon" src="assets/icon-swap.svg" width="55" height="55" alt=""></span>
+        <span class="feature__label">Swap</span>
+      </a>
+      <a href="#" class="feature" style="--c:#ffca0d;--d:.12s" data-reveal="pop">
+        <span class="feature__block"><img class="feature__pattern" style="--w:371;--x:25.5;--y:44" src="assets/pat-earn.svg" alt=""><img class="feature__icon" src="assets/icon-earn.svg" width="55" height="55" alt=""></span>
+        <span class="feature__label">Earn</span>
+      </a>
+      <a href="#" class="feature" style="--c:#78a6ff;--d:.18s" data-reveal="pop">
+        <span class="feature__block"><img class="feature__pattern" style="--w:734;--x:92;--y:92" src="assets/pat-recurring.svg" alt=""><img class="feature__icon" src="assets/icon-recurring.svg" width="55" height="55" alt=""></span>
+        <span class="feature__label">Recurring</span>
+      </a>
+      <a href="#" class="feature" style="--c:#cbea00;--d:.24s" data-reveal="pop">
+        <span class="feature__block"><img class="feature__pattern" style="--w:459;--x:-27.5;--y:40.5" src="assets/pat-bundles.svg" alt=""><img class="feature__icon" src="assets/icon-bundles.svg" width="55" height="55" alt=""></span>
+        <span class="feature__label">Bundles</span>
+      </a>
+      <a href="#" class="feature" style="--c:#ff6000;--d:.3s" data-reveal="pop">
+        <span class="feature__block"><img class="feature__pattern" style="--w:550;--x:0;--y:0" src="assets/pat-roundups.svg" alt=""><img class="feature__icon" src="assets/icon-roundups.svg" width="55" height="55" alt=""></span>
+        <span class="feature__label">Round Ups</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READY, BUY, VENGA! (42401:48644) ============ -->
+<section class="banner">
+  <div class="banner__card" data-reveal="scale">
+    <img class="banner__bg" src="assets/banner.jpg" width="2400" height="1600" alt="" loading="lazy">
+    <span class="banner__blur" aria-hidden="true"></span>
+    <h2 class="h2 banner__title">Ready, buy, Venga!</h2>
+    <a href="#" class="btn btn--dark banner__btn" data-download>
+      <span class="btn__label">Try Venga Today</span>
+      <span class="btn__ico"><img src="assets/arrow-right-dark.svg" width="24" height="24" alt=""><img src="assets/arrow-right-dark.svg" width="24" height="24" alt=""></span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FAQ + FOOTER (42401:48650) ============ -->
+<section class="faq-wrap" id="faq">
+  <div class="faq-wrap__bg" aria-hidden="true"><img src="assets/faq-bg.svg" alt=""></div>
+  <div class="faq-wrap__inner">
+    <div class="faq" data-reveal>
+      <header class="faq__head">
+        <h2 class="faq__title">Buy FAQ</h2>
+        <p class="sub">Here is additional information to answer some of the common questions about buying crypto and how to benefit from it with Venga.</p>
+      </header>
+      <div class="faq__list">
+        <div class="qa">
+          <button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-1"><span>What are the benefits of buying crypto?</span><img src="assets/faq-chevron.svg" width="33" height="33" alt=""></button>
+          <div class="qa__a" id="qa-1"><div><p>Buying crypto gives you direct ownership of digital assets like Bitcoin and Ethereum, which you can hold, sell or swap whenever you want in the Venga app. Crypto prices are volatile and you could lose money, so only invest what you can afford to lose.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-2"><span>What payment methods can I use to buy crypto?</span><img src="assets/faq-chevron.svg" width="33" height="33" alt=""></button>
+          <div class="qa__a" id="qa-2"><div><p>You buy crypto by bank transfer: transfer euros to the IBAN shown in the app and we execute your buy order once they arrive. If an order can’t be executed, the euros go back to the account they came from.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-3"><span>What cryptocurrencies can I buy on the Venga app?</span><img src="assets/faq-chevron.svg" width="33" height="33" alt=""></button>
+          <div class="qa__a" id="qa-3"><div><p>More than 80 crypto assets, including Bitcoin (BTC), Ethereum (ETH), Chainlink (LINK) and Solana (SOL). Open the app to see the full list.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-4"><span>Why choose Venga to buy cryptocurrency?</span><img src="assets/faq-chevron.svg" width="33" height="33" alt=""></button>
+          <div class="qa__a" id="qa-4"><div><p>Venga is authorised by Spain’s CNMV under MiCA. Your crypto is kept separate from Venga’s own assets, most of it in cold storage, and you see every fee before you confirm an order.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa__q" type="button" aria-expanded="false" aria-controls="qa-5"><span>Can I use Venga to buy crypto from anywhere?</span><img src="assets/faq-chevron.svg" width="33" height="33" alt=""></button>
+          <div class="qa__a" id="qa-5"><div><p>Venga operates in the EU under its MiCA authorisation. Check the app or our Help Center to see if Venga is available where you live.</p></div></div>
+        </div>
+      </div>
+      <a href="#" class="btn btn--dark"><span class="btn__label">More Questions?</span><span class="btn__ico"><img src="assets/arrow-right-faq.svg" width="24" height="24" alt=""><img src="assets/arrow-right-faq.svg" width="24" height="24" alt=""></span></a>
+    </div>
+
+    <footer class="footer" data-reveal>
+      <div class="footer__top">
+        <div class="footer__side">
+          <a href="#" class="footer__dl" data-download>Download</a>
+          <form class="news" onsubmit="event.preventDefault()">
+            <label for="news-email">Get the weekly Venga Newsletter</label>
+            <div class="news__field">
+              <img src="assets/pat-newsletter.svg" alt="">
+              <div class="news__bar"><img src="assets/icon-mail.svg" width="24" height="24" alt=""><input id="news-email" type="email" autocomplete="email" placeholder="Enter your email address"></div>
+            </div>
+          </form>
+        </div>
+        <nav class="footer__cols" aria-label="Footer">
+          <div><h4>General</h4><a href="#">About</a><a href="#">Working With Us</a><a href="#">Events</a><a href="#">Glossary</a><a href="#">Asset Prices</a><a href="#">Blog</a></div>
+          <div><h4>Product</h4><a href="#top">Buy</a><a href="#">Sell</a><a href="#">Swap</a><a href="#">Bundles</a><a href="#">Recurring Buys</a><a href="#">Round Up</a><a href="#">Earn</a><a href="#">Cards</a><a href="#">API for Businesses</a></div>
+          <div><h4>Legal</h4><a href="#">Legal Hub</a><a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">Cookies Policy</a><a href="#">Whistleblowing Policy</a><a href="#">Whistleblowing Channel</a><a href="#">Chain Abuse</a><a href="#">Travel Rule</a></div>
+          <div><h4>Help</h4><a href="#">Help Center</a><a href="#faq">FAQs</a></div>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__brand">
+          <img src="assets/logo-invert.svg" width="119" height="24" alt="Venga">
+          <div class="footer__community">
+            <p>Join our community</p>
+            <div class="socials">
+              <a href="#" aria-label="Facebook"><img src="assets/social-1.svg" width="24" height="24" alt=""></a>
+              <a href="#" aria-label="Instagram"><img src="assets/social-2.svg" width="24" height="24" alt=""></a>
+              <a href="#" aria-label="X"><img src="assets/social-3.svg" width="24" height="24" alt=""></a>
+              <a href="#" aria-label="LinkedIn"><img src="assets/social-4.svg" width="24" height="24" alt=""></a>
+              <a href="#" aria-label="YouTube"><img src="assets/social-5.svg" width="24" height="24" alt=""></a>
+              <a href="#" aria-label="Warpcast"><img src="assets/social-warpcast.svg" width="24" height="24" alt=""></a>
+            </div>
+          </div>
+        </div>
+        <img class="footer__rule" src="assets/footer-rule.svg" alt="">
+        <p class="footer__legal">Venga Europe SL is MiCA regulated by the Comisión Nacional del Mercado de Valores in Spain to operate in the EU as a crypto asset service provider.</p>
+      </div>
+    </footer>
+  </div>
+</section>
+
+</main>
+
+<script src="calculator.js?v=20261111a"></script>
+<script src="main.js?v=20261111a"></script>
+</body>
+</html>

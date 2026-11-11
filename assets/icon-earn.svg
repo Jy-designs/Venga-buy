@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="coins">
+<path id="Vector" d="M25.2083 24.0625C25.2083 27.2266 30.3384 29.7917 36.6667 29.7917C42.9949 29.7917 48.125 27.2266 48.125 24.0625C48.125 20.8984 42.9949 18.3333 36.6667 18.3333C30.3384 18.3333 25.2083 20.8984 25.2083 24.0625Z" stroke-width="3.43894" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_2" d="M25.2083 33.2292C25.2083 36.3933 30.3384 38.9583 36.6667 38.9583C42.9949 38.9583 48.125 36.3933 48.125 33.2292" stroke-width="3.43894" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_3" d="M6.875 21.7708C6.875 24.935 12.0051 27.5 18.3333 27.5C20.9133 27.5 23.2942 27.0736 25.2094 26.3542" stroke-width="3.43894" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_4" d="M6.875 29.7917C6.875 32.9558 12.0051 35.5208 18.3333 35.5208C20.9128 35.5208 23.2933 35.0946 25.2083 34.3754" stroke-width="3.43894" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_5" d="M6.875 12.6042V37.8125C6.875 40.9766 12.0051 43.5417 18.3333 43.5417C20.9129 43.5417 23.2933 43.1151 25.2083 42.3958" stroke-width="3.43894" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_6" d="M29.7917 19.4792V12.6042" stroke-width="3.43894" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_7" d="M25.2083 24.0625V42.3958C25.2083 45.56 30.3384 48.125 36.6667 48.125C42.9949 48.125 48.125 45.56 48.125 42.3958V24.0625" stroke-width="3.43894" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_8" d="M6.875 12.6042C6.875 15.7683 12.0051 18.3333 18.3333 18.3333C24.6616 18.3333 29.7917 15.7683 29.7917 12.6042C29.7917 9.44003 24.6616 6.875 18.3333 6.875C12.0051 6.875 6.875 9.44003 6.875 12.6042Z" stroke-width="3.43894" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+</g>
+</svg>

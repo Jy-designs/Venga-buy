@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="coins">
+<path id="Vector" d="M14.6667 14C14.6667 15.841 17.6514 17.3333 21.3333 17.3333C25.0152 17.3333 28 15.841 28 14C28 12.1591 25.0152 10.6667 21.3333 10.6667C17.6514 10.6667 14.6667 12.1591 14.6667 14Z" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_2" d="M14.6667 19.3333C14.6667 21.1743 17.6514 22.6667 21.3333 22.6667C25.0152 22.6667 28 21.1743 28 19.3333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_3" d="M4 12.6667C4 14.5076 6.98477 16 10.6667 16C12.1678 16 13.553 15.7519 14.6673 15.3333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_4" d="M4 17.3333C4 19.1743 6.98477 20.6667 10.6667 20.6667C12.1675 20.6667 13.5525 20.4187 14.6667 20.0002" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_5" d="M4 7.33333V22C4 23.8409 6.98477 25.3333 10.6667 25.3333C12.1675 25.3333 13.5524 25.0851 14.6667 24.6667" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_6" d="M17.3333 11.3333V7.33333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_7" d="M14.6667 14V24.6667C14.6667 26.5076 17.6514 28 21.3333 28C25.0152 28 28 26.5076 28 24.6667V14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+<path id="Vector_8" d="M4 7.33333C4 9.17428 6.98477 10.6667 10.6667 10.6667C14.3486 10.6667 17.3333 9.17428 17.3333 7.33333C17.3333 5.49238 14.3486 4 10.6667 4C6.98477 4 4 5.49238 4 7.33333Z" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke="#111A29"/>
+</g>
+</svg>
